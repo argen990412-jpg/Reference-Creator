@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reference-creator"
+version = "0.1.0"
+description = "Generate style-consistent multi-angle character reference sheets (turnarounds) for 3D modeling from a single image."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pillow>=10"]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=1.30"]
+openai = ["openai>=1.99"]
+web = ["gradio>=4"]
+all = ["google-genai>=1.30", "openai>=1.99", "gradio>=4"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+reference-creator = "reference_creator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["reference_creator*"]
